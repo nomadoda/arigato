@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyledFilmsList } from './style';
+import { Card } from '../../components/Card';
 
 const DATA_URL = 'https://swapi.co/api/films/';
 
@@ -20,7 +21,7 @@ export const FilmsList = () => {
   return (
     <StyledFilmsList>
       {films.map((film) => (
-        <li key={film.episode_id}>{JSON.stringify(film)}</li>
+        <Card key={film.episode_id} title={film.title} subtitle={film.release_date} />
       ))}
     </StyledFilmsList>
   );
