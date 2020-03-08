@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { StyledFilmsList } from './style';
 import { Card } from '../../components/Card';
+import { useFetch } from '../../utils/useFetch';
 
 const DATA_URL = 'https://swapi.co/api/films/';
 
 export const FilmsList = () => {
   const [films, setFilms] = useState([]);
-
-  async function getFilmsData() {
-    const response = await fetch(DATA_URL);
-    const json = await response.json();
-    const films = json.results;
-    setFilms(films);
-  }
+  const { response, error, loading } = useFetch(DATA_URL);
 
   useEffect(() => {
-    getFilmsData();
-  }, []);
+    if (response && response.results) {
+      const films = response.results;
+      const sortedFilms = films.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+      setFilms(sortedFilms);
+    }
+  }, [response]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Some error occured</div>;
+  }
 
   return (
     <StyledFilmsList>
