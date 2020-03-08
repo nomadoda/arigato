@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyledCard } from './style';
 
 export const Card = (props) => (
-  <StyledCard>
+  <StyledCard {...props}>
     <h2>{props.title}</h2>
     <p>{props.subtitle}</p>
   </StyledCard>

@@ -13,6 +13,7 @@ export const StyledCard = styled.li`
   background-color: ${colors.lightBlue};
   color: #ffffff;
   text-align: center;
+  cursor: pointer;
 
   @media ${viewports.mobile} {
     background-color: ${colors.blue};

@@ -3,11 +3,11 @@ import { StyledFilmsList } from './style';
 import { Card } from '../../components/Card';
 import { useFetch } from '../../utils/useFetch';
 
-const DATA_URL = 'https://swapi.co/api/films/';
+const FILMS_DATA_URL = 'https://swapi.co/api/films/';
 
-export const FilmsList = () => {
+export const FilmsList = ({ onFilmSelect }) => {
   const [films, setFilms] = useState([]);
-  const { response, error, loading } = useFetch(DATA_URL);
+  const { response, error, loading } = useFetch(FILMS_DATA_URL);
 
   useEffect(() => {
     if (response && response.results) {
@@ -28,7 +28,12 @@ export const FilmsList = () => {
   return (
     <StyledFilmsList>
       {films.map((film) => (
-        <Card key={film.episode_id} title={film.title} subtitle={film.release_date} />
+        <Card
+          key={film.episode_id}
+          title={film.title}
+          subtitle={film.release_date}
+          onClick={() => onFilmSelect(film)}
+        />
       ))}
     </StyledFilmsList>
   );
