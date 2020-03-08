@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef } from 'react';
+import React, { createContext, useRef } from 'react';
 
 const PEOPLE_DATA_URL = 'https://swapi.co/api/people/';
 

@@ -35,7 +35,7 @@ export const FilmModal = ({ film, ...props }) => {
             ))}
           </ol>
         ) : (
-          <p>Loading characters</p>
+          <p>Loading characters...</p>
         )}
       </div>
     </StyledFilmModal>

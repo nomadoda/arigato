@@ -11,12 +11,12 @@ export const StyledModal = styled.aside`
   right: 0;
   padding: 40px;
   z-index: 2;
+  overflow: auto;
   background-color: ${colors.white};
   color: ${colors.black};
 
   @media ${viewports.mobile} {
     margin: 0;
-    overflow: auto;
     overscroll-behavior: contain;
   }
 

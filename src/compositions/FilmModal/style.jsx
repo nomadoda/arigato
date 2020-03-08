@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import { Modal } from '../../components/Modal';
+import { viewports } from '../../helpers/constants/viewports';
 
 export const StyledFilmModal = styled(Modal)`
+  h2 {
+    @media ${viewports.mobile} {
+      display: none;
+    }
+  }
   ol {
-    flex: 1;
-    display: flex;
-    flex-flow: column wrap;
-    overflow: hidden;
+    column-count: 3;
+
+    @media ${viewports.mobile} {
+      column-count: unset;
+    }
 
     li {
       font-size: 1.2rem;
