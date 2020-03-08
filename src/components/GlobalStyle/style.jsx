@@ -1,9 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
+import { viewports } from '../../helpers/constants/viewports';
+import { colors } from '../../helpers/constants/colors';
 
 export const StyledGlobalStyles = createGlobalStyle`
   html {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #34495E;
+    background-color: ${colors.blue};
+
+    @media ${viewports.mobile} {
+      background-color: ${colors.lightBlue};
+    }
   }
 
   ul {
