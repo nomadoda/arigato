@@ -18,11 +18,11 @@ export const FilmsList = ({ onFilmSelect }) => {
   }, [response]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return <div>Some error occured</div>;
+    return <p>Some error occured</p>;
   }
 
   return (

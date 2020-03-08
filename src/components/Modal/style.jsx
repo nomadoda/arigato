@@ -9,21 +9,34 @@ export const StyledModal = styled.aside`
   left: 0;
   bottom: 0;
   right: 0;
-  padding: 20px;
+  padding: 40px;
   z-index: 2;
   background-color: #ffffff;
 
   @media ${viewports.mobile} {
     margin: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
   }
+
+  h1 {
+    margin: 0;
+    margin-bottom: 60px;
+
+    @media ${viewports.mobile} {
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+  }
+
   button[name='close'] {
     position: absolute;
     top: 0;
     right: 0;
-    margin: 20px;
+    margin: 40px;
     outline: none;
     border: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
   }
 `;

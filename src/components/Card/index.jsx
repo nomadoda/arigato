@@ -4,7 +4,7 @@ import { StyledCard } from './style';
 
 export const Card = (props) => (
   <StyledCard {...props}>
-    <h2>{props.title}</h2>
+    <h3>{props.title}</h3>
     <p>{props.subtitle}</p>
   </StyledCard>
 );

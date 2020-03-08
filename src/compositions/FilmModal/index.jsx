@@ -1,10 +1,12 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { StyledFilmModal } from './style';
+import React, { useContext, useEffect, useState } from 'react';
 import { CharactersContext } from '../../contexts/CharactersContext';
+import { StyledFilmModal } from './style';
 
 export const FilmModal = ({ film, ...props }) => {
   const [characters, setCharacters] = useState();
+  const [sortedCharacters, setSortedCharacters] = useState();
+
   const { getCharacters } = useContext(CharactersContext);
 
   useEffect(() => {
@@ -16,18 +18,26 @@ export const FilmModal = ({ film, ...props }) => {
     getData();
   }, [film, getCharacters]);
 
+  useEffect(() => {
+    if (characters) {
+      setSortedCharacters(characters.sort((a, b) => (a.name > b.name ? 1 : -1)));
+    }
+  }, [characters]);
+
   return (
     <StyledFilmModal title={film.title} {...props}>
-      <h2>Characters</h2>
-      {characters ? (
-        <ul>
-          {characters.map((character) => (
-            <li key={character.id}>{character.name}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading characters</p>
-      )}
+      <div className="content">
+        <h2>Characters</h2>
+        {sortedCharacters ? (
+          <ol>
+            {sortedCharacters.map((character) => (
+              <li key={character.id}>{character.name}</li>
+            ))}
+          </ol>
+        ) : (
+          <p>Loading characters</p>
+        )}
+      </div>
     </StyledFilmModal>
   );
 };
