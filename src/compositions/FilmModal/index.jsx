@@ -10,12 +10,18 @@ export const FilmModal = ({ film, ...props }) => {
   const { getCharacters } = useContext(CharactersContext);
 
   useEffect(() => {
+    let didCancel = false;
     async function getData() {
       const characterIds = film.characters.flatMap((url) => url.match(/\d+/g));
       const result = await getCharacters(characterIds);
-      setCharacters(result);
+      if (!didCancel) {
+        setCharacters(result);
+      }
     }
     getData();
+    return function() {
+      didCancel = true;
+    };
   }, [film, getCharacters]);
 
   useEffect(() => {
