@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledFilmsList } from './style';
 
-const mockData = [
-  {
-    title: 'A new hope',
-    date: new Date(1977, 5, 25),
-  },
-  {
-    title: 'Empire strikes back',
-    date: new Date(1980, 5, 17),
-  },
-];
+const DATA_URL = 'https://swapi.co/api/films/';
 
 export const FilmsList = () => {
+  const [films, setFilms] = useState([]);
+
+  async function getFilmsData() {
+    const response = await fetch(DATA_URL);
+    const json = await response.json();
+    const films = json.results;
+    setFilms(films);
+  }
+
+  useEffect(() => {
+    getFilmsData();
+  }, []);
+
   return (
     <StyledFilmsList>
-      {mockData.map((film) => (
-        <li>{film.title}</li>
+      {films.map((film) => (
+        <li key={film.episode_id}>{JSON.stringify(film)}</li>
       ))}
     </StyledFilmsList>
   );
