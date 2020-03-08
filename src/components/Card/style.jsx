@@ -11,7 +11,7 @@ export const StyledCard = styled.li`
   justify-content: center;
   border-radius: 10px;
   background-color: ${colors.lightBlue};
-  color: #ffffff;
+  color: ${colors.white};
   text-align: center;
   cursor: pointer;
 

@@ -10,6 +10,7 @@ export const StyledGlobalStyles = createGlobalStyle`
 
   html {
     background-color: ${colors.blue};
+    color: ${colors.white};
 
     @media ${viewports.mobile} {
       background-color: ${colors.lightBlue};

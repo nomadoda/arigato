@@ -11,7 +11,8 @@ export const StyledModal = styled.aside`
   right: 0;
   padding: 40px;
   z-index: 2;
-  background-color: #ffffff;
+  background-color: ${colors.white};
+  color: ${colors.black};
 
   @media ${viewports.mobile} {
     margin: 0;
