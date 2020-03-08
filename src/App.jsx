@@ -1,11 +1,12 @@
 import React from 'react';
 import { GlobalStyle } from './components/GlobalStyle';
+import { FilmsList } from './compositions/FilmsList';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div>Hello world</div>
+      <FilmsList />
     </>
   );
 }
