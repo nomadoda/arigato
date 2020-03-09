@@ -20,7 +20,7 @@ export const CharactersContextProvider = ({ children, ...props }) => {
       },
       { cachedCharacters: [], missingIds: [] }
     );
-    const responses = await Promise.all(
+    const newCharacters = await Promise.all(
       missingIds.map((id) => {
         const url = `${PEOPLE_DATA_URL}${id}`;
         return fetch(url)
@@ -31,8 +31,8 @@ export const CharactersContextProvider = ({ children, ...props }) => {
           });
       })
     );
-    const characters = [...cachedCharacters, ...responses];
-    return (cache.current = characters);
+    cache.current = [...cache.current, ...newCharacters];
+    return [...cachedCharacters, ...newCharacters];
   }
 
   return <CharactersContext.Provider value={{ getCharacters }}>{children}</CharactersContext.Provider>;
